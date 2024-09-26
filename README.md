@@ -10,7 +10,7 @@ Edde is an interactive robot designed to simulate expressive eye movements and r
 - **Simple API Requests**: Retrieves data from a server through basic HTTP GET requests, enabling integration with other web services.
 
 ## Components
-- **Microcontroller**: Built on an Arduino-compatible platform, ensuring ease of use and flexibility for developers.
+- **Microcontroller**: Built on an Arduino-compatible platform,.
 - **Display**: Features an Adafruit SH1106G OLED screen for clear visual feedback and animations.
 - **Wi-Fi Module**: Powered by the WiFiNINA library, allowing seamless connection to Wi-Fi networks for remote operation.
 
