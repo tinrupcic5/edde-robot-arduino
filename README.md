@@ -20,3 +20,8 @@ The vision for Edde includes the development of an AI backend that will enable m
 - **Interactive Responses**: Adding capabilities for Edde to respond with text, enabling a more engaging and interactive experience.
 - **Autonomous Behavior**: Implementing AI algorithms to allow Edde to move its eyes freely and react to its environment dynamically.
 
+## Edde communication to RestApi
+- Edde AI Rest Api ([repository](https://github.com/tinrupcic5/edde-rest-api.git))
+- Edde will utilize the AI REST API to facilitate real-time communication, enabling it to respond intelligently to user queries.
+
+
