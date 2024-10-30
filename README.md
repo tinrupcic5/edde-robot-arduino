@@ -1,4 +1,4 @@
-# Edde: The Interactive Robot with Wi-Fi Capabilities
+# Edde : The Interactive Robot with Wi-Fi Capabilities :space_invader:
 
 ## Overview
 Edde is an interactive robot designed to simulate expressive eye movements and responses using an OLED display. It incorporates Wi-Fi connectivity to enable communication with a server, making it a versatile platform for various IoT applications. 
