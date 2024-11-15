@@ -80,7 +80,7 @@ void loop() {
                 sleepFromEyesOpen();
                 break;
             case 7:
-                httpRequestCreateChat();
+                httpRequestCreateChat(getRandomQuestion());
                 break;
         }
 
@@ -89,4 +89,20 @@ void loop() {
             currentCase = 0;
         }
     }
+}
+const String questions[] = {
+    "What is your name?",
+    "What is your favorite color?",
+    "How old are you?",
+    "Where do you live?",
+    "What is your favorite food?",
+    "What is your hobby?",
+    "What is the meaning of life?",
+    "What is your favorite movie?"
+};
+
+const int numQuestions = sizeof(questions) / sizeof(questions[0]);
+String getRandomQuestion() {
+    int randomIndex = random(numQuestions);  
+    return questions[randomIndex];  
 }

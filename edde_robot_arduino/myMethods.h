@@ -34,6 +34,6 @@ void move_big_eye(int direction);
 
 void connect();
 void httpRequestGetVersion();
-void httpRequestCreateChat();
+void httpRequestCreateChat(String prompt);
 
 #endif

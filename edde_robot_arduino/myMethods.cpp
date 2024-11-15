@@ -75,14 +75,14 @@ void httpRequestGetVersion() {
         Serial.println("Connection to server failed");
     }
 }
-
-void httpRequestCreateChat() {
+void httpRequestCreateChat(String prompt) {
     WiFiClient client;
 
     const char* server = "192.168.1.65";
     int port = 8888;
     const char* path = "/api/chat/";
-    String jsonPayload = "{\"prompt\": \"What is your name?\"}";
+
+    String jsonPayload = "{\"prompt\": \"" + prompt + "\"}";
 
     Serial.print("Connecting to ");
     Serial.print(server);
@@ -118,6 +118,7 @@ void httpRequestCreateChat() {
         Serial.println("Connection to server failed");
     }
 }
+
 void draw_eyes(bool update) {
     display.clearDisplay();
     // Draw from center
