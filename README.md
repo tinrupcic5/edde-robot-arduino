@@ -30,6 +30,16 @@ Key features:
 2. Set up the Spring Boot backend to handle AI requests [API](https://github.com/tinrupcic5/edde-rest-api).
 3. Connect the robot to Wi-Fi and let it interact with the app.
 
+# Connecting SH1106 OLED Display to Arduino
+
+### Wiring:
+| SH1106 Pin | Arduino Pin     |
+|------------|-----------------|
+| **VCC**    |  **VCC**        |
+| **GND**    |  **GND**        |
+| **SCK**    |  **SCL**        |
+| **SDA**    |  **SDA**        |
+
 
 ## Future of Edde:
 - **Face Recognition**: In the future, Edde will be equipped with a camera to recognize faces. This feature will allow Edde to identify and interact with specific individuals, offering personalized responses.
