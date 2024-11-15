@@ -46,12 +46,8 @@ This project focuses on creating a robot with animated, movable eyes that can in
 # Connecting LiquidCrystal_I2C to Arduino MKR 1010
 
 ### Wiring:
-- **GND** on the LCD → **GND** on the MKR 1010.
-- **VCC** on the LCD → **5V** on the MKR 1010.
-- **SDA** on the LCD → **SDA** (Pin **11**) on the MKR 1010.
-- **SCL** on the LCD → **SCL** (Pin **12**) on the MKR 1010.
 
-| LCD Pin      | Arduino MKR 1010 Pin |
+| LCD Pin      | Arduino MKR 1010 Pin  |
 |--------------|-----------------------|
 | **GND**      | **GND**               |
 | **VCC**      | **VCC**               |
