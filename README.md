@@ -30,6 +30,37 @@ This project focuses on creating a robot with animated, movable eyes that can in
 2. Set up the Spring Boot backend to handle AI requests [API](https://github.com/tinrupcic5/edde-rest-api).
 3. Connect the robot to Wi-Fi and let it interact with the app.
 
+# Connecting SH1106 OLED Display to Arduino
+
+### Wiring:
+| SH1106 Pin | Arduino Pin     |
+|------------|-----------------|
+| **VCC**    |  **VCC**        |
+| **GND**    |  **GND**        |
+| **SCK**    |  **SCL**        |
+| **SDA**    |  **SDA**        |
+
+
+---
+
+# Connecting LiquidCrystal_I2C to Arduino MKR 1010
+
+### Wiring:
+- **GND** on the LCD → **GND** on the MKR 1010.
+- **VCC** on the LCD → **5V** on the MKR 1010.
+- **SDA** on the LCD → **SDA** (Pin **11**) on the MKR 1010.
+- **SCL** on the LCD → **SCL** (Pin **12**) on the MKR 1010.
+
+| LCD Pin      | Arduino MKR 1010 Pin |
+|--------------|-----------------------|
+| **GND**      | **GND**               |
+| **VCC**      | **VCC**               |
+| **SDA**      | **SDA**               |
+| **SCL**      | **SCL**               |
+
+<img src="https://github.com/tinrupcic5/edde-robot-arduino/blob/lcd-update/images/WhatsApp%20Image%202024-11-15%20at%2016.07.40.jpeg" alt="Arduino" width="300"/>
+<img src="https://github.com/tinrupcic5/edde-robot-arduino/blob/lcd-update/images/WhatsApp%20Image%202024-11-15%20at%2016.07.41.jpeg" alt="Arduino" width="300"/>
+
 
 ## Future of Edde:
 - **Face Recognition**: In the future, Edde will be equipped with a camera to recognize faces. This feature will allow Edde to identify and interact with specific individuals, offering personalized responses.
