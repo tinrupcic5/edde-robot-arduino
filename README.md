@@ -4,7 +4,7 @@ This project focuses on creating a robot with animated, movable eyes that can in
 
 :warning: Still in progress
 
-Key features:
+### Key features:
 - Animated eye movements
 - Wi-Fi connectivity to a Spring Boot app
 - AI-powered question answering functionality
