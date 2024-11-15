@@ -1,9 +1,11 @@
+// edde.ino
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SH110X.h>
 #include <SPI.h>
 #include <WiFiNINA.h>
 #include "myMethods.h"
+#include <LiquidCrystal_I2C.h>
 
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
@@ -11,10 +13,10 @@
 #define i2c_Address 0x3c // Initialize with the I2C address
 
 Adafruit_SH1106G display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
+LiquidCrystal_I2C lcd(0x27,20,4);  
 // Wi-Fi credentials and server details
-const char* ssid = "";
-const char* password = "";
+const char* ssid = "ALHN-9F9F";
+const char* password = "kFyBrcmFv5";
 int status = WL_IDLE_STATUS; // The WiFi radio's status
 
 // Reference state
@@ -33,7 +35,11 @@ int right_eye_y = 32;
 int right_eye_height = ref_eye_height;
 int right_eye_width = ref_eye_width;
 
-
+ // led | arduino
+  // vcc - vcc
+  // gnd - gnd
+  // sck - scl
+  // sda = sda
 void setup() {
     Serial.begin(115200);
     display.begin(i2c_Address, true);
@@ -44,6 +50,13 @@ void setup() {
     display.println(F("Edde is Waking up..."));
     display.display();
     delay(4600);
+
+    lcd.init();  // Initialize the LCD
+    lcd.backlight();  // Turn on the backlight
+    lcd.setCursor(0, 0);  // Set the cursor to the top-left corner (move to beginning)
+    lcd.print("Edde is Waking up...");  // Print your message
+
+
     connect();
 }
 
@@ -80,7 +93,7 @@ void loop() {
                 sleepFromEyesOpen();
                 break;
             case 7:
-                httpRequestCreateChat(getRandomQuestion());
+                httpRequestCreateChat();
                 break;
         }
 
@@ -89,20 +102,4 @@ void loop() {
             currentCase = 0;
         }
     }
-}
-const String questions[] = {
-    "What is your name?",
-    "What is your favorite color?",
-    "How old are you?",
-    "Where do you live?",
-    "What is your favorite food?",
-    "What is your hobby?",
-    "What is the meaning of life?",
-    "What is your favorite movie?"
-};
-
-const int numQuestions = sizeof(questions) / sizeof(questions[0]);
-String getRandomQuestion() {
-    int randomIndex = random(numQuestions);  
-    return questions[randomIndex];  
 }

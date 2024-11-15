@@ -1,7 +1,9 @@
 // myMethods.cpp
 #include "myMethods.h"
 #include <WiFiNINA.h>
+#include <ArduinoJson.h> 
 #include <Arduino.h> /
+// Define the screen dimensions
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
@@ -36,6 +38,10 @@ void connect() {
     Serial.print("Signal strength (RSSI): ");
     Serial.print(WiFi.RSSI());
     Serial.println(" dBm");
+
+    lcd.clear(); 
+    lcd.setCursor(0, 0);  // Set the cursor to the top-left corner (move to beginning)
+    lcd.print("Ask me anything :)");  // Print your message
 }
 
 void httpRequestGetVersion() {
@@ -75,14 +81,17 @@ void httpRequestGetVersion() {
         Serial.println("Connection to server failed");
     }
 }
-void httpRequestCreateChat(String prompt) {
+#include <ArduinoJson.h>  // Include the ArduinoJson library
+
+void httpRequestCreateChat() {
     WiFiClient client;
 
     const char* server = "192.168.1.65";
     int port = 8888;
     const char* path = "/api/chat/";
+    String jsonPayload = "{\"prompt\": \"What is your name?\"}";
 
-    String jsonPayload = "{\"prompt\": \"" + prompt + "\"}";
+    String response = ""; // Variable to store the server's response
 
     Serial.print("Connecting to ");
     Serial.print(server);
@@ -109,11 +118,39 @@ void httpRequestCreateChat(String prompt) {
 
         while (client.available()) {
             String line = client.readStringUntil('\r');
-            Serial.print(line);
+            response += line;  // Append each line to the response string
         }
 
         client.stop();
         Serial.println("Connection closed");
+
+        // Print the raw response for debugging
+        Serial.println("Response:");
+        Serial.println(response);  // Print the entire response
+
+        // Clean the response if necessary (e.g., extract JSON part)
+        int jsonStartIndex = response.indexOf("{");  // Find the start of the JSON string
+        if (jsonStartIndex != -1) {
+            response = response.substring(jsonStartIndex);  // Extract the JSON portion
+        }
+
+        // Now parse the JSON response
+        DynamicJsonDocument doc(1024);  // Create a JSON document
+        DeserializationError error = deserializeJson(doc, response);  // Deserialize the response into the JSON document
+
+        if (error) {
+            Serial.print("Failed to parse JSON: ");
+            Serial.println(error.f_str());
+        } else {
+            // Extract the "messageResponse" field from the JSON
+            const char* messageResponse = doc["messageResponse"];  // Access the "messageResponse" key
+
+            // Display only the message on the LCD
+            lcd.clear();  
+            lcd.setCursor(0, 1);  
+            lcd.print(messageResponse);  // Display the message on the second row
+        }
+
     } else {
         Serial.println("Connection to server failed");
     }
