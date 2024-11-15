@@ -16,7 +16,7 @@ Key features:
 
 
 ## Technologies
-- Arduino
+- Arduino MKR WIFI 1010
 - Wi-Fi (WiFiNINA)
 - Spring Boot (AI interaction)
 

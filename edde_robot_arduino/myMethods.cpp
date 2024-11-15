@@ -2,7 +2,6 @@
 #include "myMethods.h"
 #include <WiFiNINA.h>
 #include <Arduino.h> /
-// Define the screen dimensions
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
